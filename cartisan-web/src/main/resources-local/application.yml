@@ -1,0 +1,135 @@
+spring:
+  profiles:
+    active: dev, ADSyncer
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://10.101.58.230:13306/ad?characterEncoding=UTF-8&amp;socketTimeout=5000&amp;connectTimeout=1000&amp;allowMultiQueries=true&amp;zeroDateTimeBehavior=convertToNull
+      username: ad_admin
+      password: qosemrhksflwk
+      dbcp2:
+        max-total: 5
+        max-idle: 5
+        initial-size: 5
+        min-idle: 5
+        max-wait-millis: 1000
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 30000
+        num-tests-per-eviction-run: 5
+        min-evictable-idle-time-millis: -1
+        validation-query: SELECT 1
+        pool-prepared-statements: true
+        max-open-prepared-statements: 50
+  cache:
+    ehcache:
+      config: config/ehcache.xml
+  jackson:
+    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+  rabbitmq:
+    addresses: 10.101.43.63:5672, 10.101.28.43:5672,10.101.31.64:5672
+    username: band_dev
+    password: 10dnjf13dlf!@
+    virtual-host: /band/async
+    listener:
+      concurrency: 5
+      acknowledge-mode: none
+server:
+  port: 9002
+
+#마이 바티스, default 가 아닌것만 설정 하자!
+mybatis:
+  mapper-locations:
+    - classpath*:sqlmap/**/*.xml
+  configuration:
+    lazyLoadingEnabled: true
+    aggressive-lazy-loading: true
+    default-executor-type: simple
+    defaultStatementTimeout: 5
+    mapUnderscoreToCamelCase: true
+  type-handlers-package: us.band.ad.api.core.util.mybatis
+adsyncer: 
+  host: 10.101.16.161:2181,10.101.49.153:2181,10.101.27.132:2181
+  sessionTimeout : 6000
+  connectionTimeout : 4000 
+  name: ""
+demographic:
+  host: 10.101.62.114
+  port: 10022
+  timeout : 200
+  pool:
+    max-total: 200
+    max-wait-millis: 10
+    min-idle-per-key: 20
+adplus:
+  request:
+    baseUri: http://test-adplus-api.band.us/addeliverer/rest/ad/request
+    requestTimeout: 100
+    connectionTimeout: 100
+banner:
+  provider:
+    meba:
+      url: http://218.49.170.233/get_ad.mezzo/
+    adpost:
+      url: http://test.band.ad.naver.com/adshow?unit=1081B
+    cauly:
+      url: http://175.158.8.187:12445/caulyImpress
+      requestTimeout: 1000
+      connectionTimeout: 1000
+      partnerKey: campmobile
+      partnerSecret_key: 47691e15405999c272352600bde778fe
+      iosCode: Hp8rmoct
+      androidCode: rJFl8Of9
+  api:
+    v13-redirect-url: http://local-ad-api.band.us:8080/v2/log/banner/click
+bandapi:
+  request:    
+    requestTimeout: 1000
+    connectionTimeout: 1000
+    userInfoUri: http://test-api.band.us/i1/get_ad_user_info?akey={akey}&user_no={user_no}
+    postFromPublicBandUri: http://test-api.band.us/i1/get_post_content?akey={akey}&band_no={band_no}&post_no={post_no}
+    bandsUri: http://test-api.band.us/i1.1/get_bands?akey={akey}&band_nos={band_nos}&fields={fields}
+bandredis:
+  biz:
+    zookeeperAddress: dev.xnbasearc.navercorp.com:2181
+    clusterName: band_biz
+    timeout: 3000
+    poolSize: 2
+    maxwait: 1000
+  ad:
+    zookeeperAddress: dev.xnbasearc.navercorp.com:2181
+    clusterName: band_dev
+    timeout: 3000
+    poolSize: 2
+    maxwait: 1000
+#logging:
+#  file: /home1/irteam/logs/ad-api3/ad-api3.log
+#  level:
+#    root: INFO
+#  file: /home1/irteam/logs/ad-api3/ad-api3.log
+kafka:
+  ad:
+    topic: local_band_ad
+    metadataBrokerList: 10.113.224.88:9092
+    serializerClass: kafka.serializer.StringEncoder
+    requestRequiredAcks: 1
+biz:
+  thrift:
+    host: dev-bizapi.band.us
+    port: 10011
+    timeout: 200
+    pool:
+      max-total: 200
+      max-wait-millis: 10
+      min-idle-per-key: 20
+ad:
+  api:
+    host: http://local-ad-api.band.us
+ruleset:
+  host: 10.101.16.161:2181,10.101.49.153:2181,10.101.27.132:2181
+  timeout: 2000
+hbase:
+  zookeeper:
+    host: dev-band-stats001.ncl:2181,dev-band-stats002.ncl:2181,dev-band-stats003.ncl:2181
+naversa:
+  postadUri: http://qa.apbox.naver.com:22001/m_band/adunit

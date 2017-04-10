@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!-- 	<include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+	<appender name="dailyRollingFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<prudent>true</prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home1/irteam/logs/tomcat/ad-api/ad-api3.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} \(%file:%line\) %msg %n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework.web" level="ERROR" />
+	<logger name="org.thymeleaf" level="ERROR" />
+	<logger name="org.hibernate.SQL" level="ERROR" />
+	<logger name="org.quartz.core" level="ERROR" />
+	<logger name="org.h2.server.web" level="ERROR" />	
+	<logger name="org.apache" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="us.band.stats.flume" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="us.band.ad.api.core" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="us.band.ad.api" level="DEBUG" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="us.band.ad.api.sync.bo" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="us.band.ad.api.feed.rule" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="com.nhncorp.redis" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.mybatis.spring" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.hibernate" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.springframework" level="ERROR" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	
+	<root level="ERROR">
+		<appender-ref ref="dailyRollingFileAppender" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>

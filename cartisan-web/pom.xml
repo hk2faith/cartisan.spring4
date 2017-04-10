@@ -10,8 +10,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>cartisan-was</artifactId>
-	<name>spring-core</name>
+	<artifactId>cartisan-web</artifactId>
+	<name>cartisan-web</name>
 	<packaging>jar</packaging>
 
 	<properties>
