@@ -6,12 +6,12 @@
 
 	<parent>
 		<groupId>us.cartisan</groupId>
-		<artifactId>spring</artifactId>
+		<artifactId>cartisan-spring</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>cartisan-web</artifactId>
-	<name>cartisan-web</name>
+	<artifactId>cartisan-spring-web</artifactId>
+	<name>cartisan-spring-web</name>
 	<packaging>jar</packaging>
 
 	<properties>
