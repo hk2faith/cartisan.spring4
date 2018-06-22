@@ -11,19 +11,21 @@
 
 	<groupId>us.cartisan</groupId>
 	<artifactId>cartisan-spring</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<modules>
-		<module>spring-core</module>
-		<module>artisan-was</module>
+		<module>cartisan-spring-core</module>
+		<module>cartisan-spring-batch</module>
+		<module>cartisan-spring-web</module>
+		<module>cartisan-ext-aws</module>
 	</modules>
 
 	<profiles>
@@ -74,6 +76,37 @@
             </releases>
         </repository>
 	</repositories>
+	
+	<dependencies>
+		<!-- start test libs -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- end test libs -->
+	</dependencies>
 
 	<reporting>
 		<plugins>

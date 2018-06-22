@@ -1,4 +1,4 @@
-package us.cartisan.web;
+package us.cartisan.web.common.config;
 
 import java.util.List;
 
@@ -8,13 +8,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import us.cartisan.web.controller.interceptor.LoggerInterceptor;
+
 @EnableWebMvc
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		/*registry.addInterceptor(new AuthenticationInterceptor());
-		registry.addInterceptor(new LoggerInterceptor());*/
+		registry.addInterceptor(new LoggerInterceptor());
 	}
 
 	@Override

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>us.cartisan</groupId>
 		<artifactId>cartisan-spring</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>cartisan-spring-core</artifactId>
@@ -52,7 +52,6 @@
 			<artifactId>spring-boot-starter</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -90,12 +89,8 @@
 		</dependency>
 
 		<!-- API 서버에 밴드 정보를 조회 하는데 그 결과를 캐쉬한다. -->
-		<!-- https://spring.io/guides/gs/caching/ -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-cache</artifactId>
-			<scope>provided</scope>
-		</dependency>
+		
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -116,11 +111,9 @@
 			<version>3.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
+		
+		
+		
 
 		<!-- Thrift Client -->
 		<dependency>
@@ -153,16 +146,9 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
+		
 
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -172,10 +158,51 @@
 
 		<!-- ehcache -->
 		<dependency>
+			<!-- https://spring.io/guides/gs/caching/ -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
 			<version>2.6.9</version>
 		</dependency>
+
+		<!-- start util libs -->
+		<dependency>
+			<groupId>org.openkoreantext</groupId>
+			<artifactId>open-korean-text</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+		</dependency>
+		<!-- end util libs -->
 	</dependencies>
 
 	<build>
